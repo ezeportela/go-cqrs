@@ -15,6 +15,10 @@ type EventStore interface {
 
 var eventStore EventStore
 
+func SetEventStore(store EventStore) {
+	eventStore = store
+}
+
 func Close() {
 	eventStore.Close()
 }

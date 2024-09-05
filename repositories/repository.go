@@ -8,7 +8,7 @@ import (
 
 type Repository interface {
 	Close()
-	InsertFeed(ctx context.Context, feed *models.Feed)
+	InsertFeed(ctx context.Context, feed *models.Feed) error
 	ListFeeds(ctx context.Context) ([]*models.Feed, error)
 }
 
@@ -22,8 +22,8 @@ func Close() {
 	repository.Close()
 }
 
-func InsertFeed(ctx context.Context, feed *models.Feed) {
-	repository.InsertFeed(ctx, feed)
+func InsertFeed(ctx context.Context, feed *models.Feed) error {
+	return repository.InsertFeed(ctx, feed)
 }
 
 func ListFeeds(ctx context.Context) ([]*models.Feed, error) {

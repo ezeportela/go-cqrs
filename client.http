@@ -1,0 +1,10 @@
+POST http://localhost:8080/feeds
+
+{
+    "title": "vscode-httpyac",
+    "description": "AnWeber"
+}
+
+###
+
+GET http://localhost:8080/feeds

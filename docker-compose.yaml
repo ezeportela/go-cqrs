@@ -1,20 +1,31 @@
-version: '3.7'
-
 services:
   postgres:
-    build:
-      build: './database'
-      environment:
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: admin1234
-        POSTGRES_DB: mydb
-      restart: always
+    build: "./database"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_DB: mydb
+    restart: always
       
-    nats:
-      image: "nats-streaming:0.17.0"
-      restart: always
+  nats:
+    image: "nats-streaming:0.17.0"
+    restart: always
 
-    elasticsearch:
-      image: "docker.elastic.co/elasticsearch/elasticsearch:7.6.2"
-      environment:
-        - discovery.type=single-node
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.6.2"
+    environment:
+      - discovery.type=single-node
+
+  feed:
+    build: '.'
+    command: "feed-service"
+    depends_on:
+      - postgres
+      - nats
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_DB: mydb
+      NATS_ADDRESS: "nats:4222"
