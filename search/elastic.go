@@ -79,7 +79,6 @@ func (r *ElasticSearchRepository) SearchFeed(ctx context.Context, query string) 
 	if res.IsError() {
 		return nil, errors.New(res.String())
 	}
-	return results, nil
 
 	var eRes MapAny
 	if err = json.NewDecoder(res.Body).Decode(&eRes); err != nil {

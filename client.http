@@ -1,10 +1,14 @@
 POST http://localhost:8080/feeds
 
 {
-    "title": "vscode-httpyac",
-    "description": "AnWeber"
+    "title": "mi curso con node",
+    "description": "playground usando node para hacer un curso"
 }
 
 ###
 
 GET http://localhost:8080/feeds
+
+###
+
+GET http://localhost:8080/search?q=go

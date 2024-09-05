@@ -51,14 +51,3 @@ func createFeedHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(feed)
 }
-
-func listFeedHandler(w http.ResponseWriter, r *http.Request) {
-	feeds, err := repositories.ListFeeds(r.Context())
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(feeds)
-}
