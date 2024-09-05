@@ -11,4 +11,4 @@ GET http://localhost:8080/feeds
 
 ###
 
-GET http://localhost:8080/search?q=go
+GET http://localhost:8080/search?q=golang

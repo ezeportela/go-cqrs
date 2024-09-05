@@ -14,7 +14,7 @@ services:
   elasticsearch:
     image: "docker.elastic.co/elasticsearch/elasticsearch:7.6.2"
     environment:
-      - discovery.type=single-node
+      - "discovery.type=single-node"
 
   feed:
     build: '.'
